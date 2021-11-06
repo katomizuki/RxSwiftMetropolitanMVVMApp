@@ -1,7 +1,7 @@
 import UIKit
 import RxSwift
 
-class MetroPolitaListController: UIViewController {
+final class MetroPolitaListController: UIViewController {
     private lazy var collectionView:UICollectionView = {
         let layout = MetroPolitaListController.createCompositionalLayout()
         let frame = view.frame
