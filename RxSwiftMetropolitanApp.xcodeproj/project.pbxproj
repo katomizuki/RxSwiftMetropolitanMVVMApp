@@ -9,21 +9,24 @@
 /* Begin PBXBuildFile section */
 		D30E70F02736918200FBE5AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E70EF2736918200FBE5AF /* AppDelegate.swift */; };
 		D30E70F22736918200FBE5AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E70F12736918200FBE5AF /* SceneDelegate.swift */; };
-		D30E70F42736918200FBE5AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E70F32736918200FBE5AF /* ViewController.swift */; };
-		D30E70F72736918200FBE5AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30E70F52736918200FBE5AF /* Main.storyboard */; };
+		D30E70F42736918200FBE5AF /* MetroPolitaListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E70F32736918200FBE5AF /* MetroPolitaListController.swift */; };
 		D30E70F92736918500FBE5AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30E70F82736918500FBE5AF /* Assets.xcassets */; };
-		D30E70FC2736918500FBE5AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30E70FA2736918500FBE5AF /* LaunchScreen.storyboard */; };
+		D30E71052736920F00FBE5AF /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D30E71042736920F00FBE5AF /* RxCocoa */; };
+		D30E71072736920F00FBE5AF /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = D30E71062736920F00FBE5AF /* RxRelay */; };
+		D30E71092736920F00FBE5AF /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D30E71082736920F00FBE5AF /* RxSwift */; };
+		D30E710C2736929D00FBE5AF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D30E710B2736929D00FBE5AF /* SDWebImage */; };
+		D30E710F273692CE00FBE5AF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D30E710E273692CE00FBE5AF /* Alamofire */; };
+		D30E7114273698AE00FBE5AF /* ArtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E7113273698AE00FBE5AF /* ArtCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D30E70EC2736918200FBE5AF /* RxSwiftMetropolitanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftMetropolitanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30E70EF2736918200FBE5AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D30E70F12736918200FBE5AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D30E70F32736918200FBE5AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D30E70F62736918200FBE5AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D30E70F32736918200FBE5AF /* MetroPolitaListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroPolitaListController.swift; sourceTree = "<group>"; };
 		D30E70F82736918500FBE5AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D30E70FB2736918500FBE5AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D30E70FD2736918500FBE5AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D30E7113273698AE00FBE5AF /* ArtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +34,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D30E710F273692CE00FBE5AF /* Alamofire in Frameworks */,
+				D30E71092736920F00FBE5AF /* RxSwift in Frameworks */,
+				D30E71072736920F00FBE5AF /* RxRelay in Frameworks */,
+				D30E710C2736929D00FBE5AF /* SDWebImage in Frameworks */,
+				D30E71052736920F00FBE5AF /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +64,38 @@
 		D30E70EE2736918200FBE5AF /* RxSwiftMetropolitanApp */ = {
 			isa = PBXGroup;
 			children = (
+				D30E71122736989200FBE5AF /* ViewModel */,
+				D30E71112736988600FBE5AF /* Models */,
+				D30E71102736987D00FBE5AF /* Views */,
 				D30E70EF2736918200FBE5AF /* AppDelegate.swift */,
 				D30E70F12736918200FBE5AF /* SceneDelegate.swift */,
-				D30E70F32736918200FBE5AF /* ViewController.swift */,
-				D30E70F52736918200FBE5AF /* Main.storyboard */,
+				D30E70F32736918200FBE5AF /* MetroPolitaListController.swift */,
 				D30E70F82736918500FBE5AF /* Assets.xcassets */,
-				D30E70FA2736918500FBE5AF /* LaunchScreen.storyboard */,
 				D30E70FD2736918500FBE5AF /* Info.plist */,
 			);
 			path = RxSwiftMetropolitanApp;
+			sourceTree = "<group>";
+		};
+		D30E71102736987D00FBE5AF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D30E7113273698AE00FBE5AF /* ArtCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D30E71112736988600FBE5AF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D30E71122736989200FBE5AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +114,13 @@
 			dependencies = (
 			);
 			name = RxSwiftMetropolitanApp;
+			packageProductDependencies = (
+				D30E71042736920F00FBE5AF /* RxCocoa */,
+				D30E71062736920F00FBE5AF /* RxRelay */,
+				D30E71082736920F00FBE5AF /* RxSwift */,
+				D30E710B2736929D00FBE5AF /* SDWebImage */,
+				D30E710E273692CE00FBE5AF /* Alamofire */,
+			);
 			productName = RxSwiftMetropolitanApp;
 			productReference = D30E70EC2736918200FBE5AF /* RxSwiftMetropolitanApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +149,11 @@
 				Base,
 			);
 			mainGroup = D30E70E32736918200FBE5AF;
+			packageReferences = (
+				D30E71032736920F00FBE5AF /* XCRemoteSwiftPackageReference "RxSwift" */,
+				D30E710A2736929D00FBE5AF /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				D30E710D273692CD00FBE5AF /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = D30E70ED2736918200FBE5AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +168,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D30E70FC2736918500FBE5AF /* LaunchScreen.storyboard in Resources */,
 				D30E70F92736918500FBE5AF /* Assets.xcassets in Resources */,
-				D30E70F72736918200FBE5AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,32 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D30E70F42736918200FBE5AF /* ViewController.swift in Sources */,
+				D30E70F42736918200FBE5AF /* MetroPolitaListController.swift in Sources */,
 				D30E70F02736918200FBE5AF /* AppDelegate.swift in Sources */,
 				D30E70F22736918200FBE5AF /* SceneDelegate.swift in Sources */,
+				D30E7114273698AE00FBE5AF /* ArtCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D30E70F52736918200FBE5AF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D30E70F62736918200FBE5AF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D30E70FA2736918500FBE5AF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D30E70FB2736918500FBE5AF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D30E70FE2736918500FBE5AF /* Debug */ = {
@@ -294,7 +317,6 @@
 				INFOPLIST_FILE = RxSwiftMetropolitanApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +344,6 @@
 				INFOPLIST_FILE = RxSwiftMetropolitanApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -360,6 +381,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D30E71032736920F00FBE5AF /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		D30E710A2736929D00FBE5AF /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		D30E710D273692CD00FBE5AF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D30E71042736920F00FBE5AF /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D30E71032736920F00FBE5AF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		D30E71062736920F00FBE5AF /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D30E71032736920F00FBE5AF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		D30E71082736920F00FBE5AF /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D30E71032736920F00FBE5AF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		D30E710B2736929D00FBE5AF /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D30E710A2736929D00FBE5AF /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		D30E710E273692CE00FBE5AF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D30E710D273692CD00FBE5AF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D30E70E42736918200FBE5AF /* Project object */;
 }
