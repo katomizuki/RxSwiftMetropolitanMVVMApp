@@ -11,3 +11,4 @@ struct ArtObject:Codable {
     var additionalImages:[String]
 }
 
+

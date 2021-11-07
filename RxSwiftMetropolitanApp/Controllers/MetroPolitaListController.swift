@@ -1,7 +1,10 @@
 import UIKit
 import RxSwift
-
+import RxCocoa
+import SDWebImage
 final class MetroPolitaListController: UIViewController {
+    private let disposeBag = DisposeBag()
+    private var viewModel = [ArtObjectViewModel]()
     private lazy var collectionView:UICollectionView = {
         let layout = MetroPolitaListController.createCompositionalLayout()
         let frame = view.frame
@@ -14,14 +17,23 @@ final class MetroPolitaListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
+        setupArtData()
     }
     
     private func setupArtData() {
-        ArtObjectDataModel.fetchArtObject { arts in
-            arts.subscribe { art in
-                print(art)
-            }
-        }
+//        ArtObjectDataModel.fetchArtObject { arts in
+//            arts.subscribe { art in
+//                art.map { $0.forEach { $0
+//                    let viewModel = ArtObjectViewModel(art: $0)
+//                    self.viewModel.append(viewModel)
+//                }
+//              }
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
+//            }
+//            .disposed(by: self.disposeBag)
+//        }
     }
 }
 
@@ -32,10 +44,12 @@ extension MetroPolitaListController: UICollectionViewDelegate {
 }
 extension MetroPolitaListController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return viewModel.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArtCell.id, for: indexPath) as? ArtCell else { fatalError() }
+      
+        
         return cell
     }
 }

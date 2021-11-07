@@ -3,6 +3,7 @@ import RxSwift
 import RxCocoa
 struct ArtObjectViewModel {
     let art:ArtObject
+//    let arts:Observable<[ArtObject]>
     var title:Observable<String> {
         return Observable<String>.just(art.title)
     }

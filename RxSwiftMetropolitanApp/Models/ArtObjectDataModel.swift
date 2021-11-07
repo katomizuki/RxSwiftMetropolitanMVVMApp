@@ -29,6 +29,7 @@ struct ArtObjectDataModel {
         }
       }
         dispatchGroup.notify(queue: .main) {
+            arts = arts.filter{ $0.primaryImage != "" }
             completion(Observable.just(arts))
         }
     }
