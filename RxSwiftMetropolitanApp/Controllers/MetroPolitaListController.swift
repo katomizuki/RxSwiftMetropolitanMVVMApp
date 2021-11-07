@@ -15,6 +15,14 @@ final class MetroPolitaListController: UIViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
     }
+    
+    private func setupArtData() {
+        ArtObjectDataModel.fetchArtObject { arts in
+            arts.subscribe { art in
+                print(art)
+            }
+        }
+    }
 }
 
 extension MetroPolitaListController: UICollectionViewDelegate {

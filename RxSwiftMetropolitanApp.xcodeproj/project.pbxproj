@@ -19,6 +19,7 @@
 		D30E7114273698AE00FBE5AF /* ArtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E7113273698AE00FBE5AF /* ArtCell.swift */; };
 		D30E71172736BE8600FBE5AF /* ArtObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E71162736BE8600FBE5AF /* ArtObject.swift */; };
 		D30E71192736C00700FBE5AF /* ArtObjectDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E71182736C00700FBE5AF /* ArtObjectDataModel.swift */; };
+		D32B12D1273797E20039CC06 /* ArtObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B12D0273797E20039CC06 /* ArtObjectViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		D30E7113273698AE00FBE5AF /* ArtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtCell.swift; sourceTree = "<group>"; };
 		D30E71162736BE8600FBE5AF /* ArtObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObject.swift; sourceTree = "<group>"; };
 		D30E71182736C00700FBE5AF /* ArtObjectDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObjectDataModel.swift; sourceTree = "<group>"; };
+		D32B12D0273797E20039CC06 /* ArtObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObjectViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		D30E71122736989200FBE5AF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D32B12D0273797E20039CC06 /* ArtObjectViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			files = (
 				D30E70F42736918200FBE5AF /* MetroPolitaListController.swift in Sources */,
 				D30E71172736BE8600FBE5AF /* ArtObject.swift in Sources */,
+				D32B12D1273797E20039CC06 /* ArtObjectViewModel.swift in Sources */,
 				D30E70F02736918200FBE5AF /* AppDelegate.swift in Sources */,
 				D30E70F22736918200FBE5AF /* SceneDelegate.swift in Sources */,
 				D30E71192736C00700FBE5AF /* ArtObjectDataModel.swift in Sources */,
