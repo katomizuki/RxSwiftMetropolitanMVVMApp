@@ -21,19 +21,23 @@ final class MetroPolitaListController: UIViewController {
     }
     
     private func setupArtData() {
-//        ArtObjectDataModel.fetchArtObject { arts in
-//            arts.subscribe { art in
-//                art.map { $0.forEach { $0
-//                    let viewModel = ArtObjectViewModel(art: $0)
-//                    self.viewModel.append(viewModel)
-//                }
-//              }
-//                DispatchQueue.main.async {
-//                    self.collectionView.reloadData()
-//                }
-//            }
-//            .disposed(by: self.disposeBag)
-//        }
+//        let group = DispatchGroup()
+        for i in 60121...60221 {
+//            group.enter()
+        guard let url = URL(string: "https://collectionapi.metmuseum.org/public/collection/v1/objects/\(i)") else { return }
+        let resource = Resource<ArtObject>(url: url)
+        ArtObjectDataModel.load(resource: resource).subscribe { artEventObj in
+            
+            guard let artObj = artEventObj.element else { return }
+            let artVM = ArtObjectViewModel(art: artObj)
+                self.viewModel.append(artVM)
+            }
+        .disposed(by: disposeBag)
+     }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            print(self.viewModel,"✊")
+            self.collectionView.reloadData()
+        }
     }
 }
 
@@ -48,8 +52,14 @@ extension MetroPolitaListController:UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArtCell.id, for: indexPath) as? ArtCell else { fatalError() }
-      
-        
+        cell.backgroundColor = .systemOrange
+        let artVM = viewModel[indexPath.row]
+        artVM.primaryImage.asDriver(onErrorJustReturn: "")
+            .drive { urlStriing in
+                let url = URL(string: urlStriing)
+                cell.imageView.sd_setImage(with: url, completed: nil)
+            }
+            .disposed(by: disposeBag)
         return cell
     }
 }
