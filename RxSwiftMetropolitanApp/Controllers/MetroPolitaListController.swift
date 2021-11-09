@@ -2,9 +2,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SDWebImage
-final class MetroPolitaListController: UIViewController {
+class MetroPolitaListController: UIViewController,Coordinating {
     private let disposeBag = DisposeBag()
     private var viewModel = [ArtObjectViewModel]()
+    var coordinator:Coordinator?
     private lazy var collectionView:UICollectionView = {
         let layout = MetroPolitaListController.createCompositionalLayout()
         let frame = view.frame
@@ -21,9 +22,7 @@ final class MetroPolitaListController: UIViewController {
     }
     
     private func setupArtData() {
-//        let group = DispatchGroup()
         for i in 60121...60221 {
-//            group.enter()
         guard let url = URL(string: "https://collectionapi.metmuseum.org/public/collection/v1/objects/\(i)") else { return }
         let resource = Resource<ArtObject>(url: url)
         ArtObjectDataModel.load(resource: resource).subscribe { artEventObj in
@@ -35,7 +34,6 @@ final class MetroPolitaListController: UIViewController {
         .disposed(by: disposeBag)
      }
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            print(self.viewModel,"✊")
             self.collectionView.reloadData()
         }
     }
@@ -44,6 +42,8 @@ final class MetroPolitaListController: UIViewController {
 extension MetroPolitaListController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function)
+        let artVM = viewModel[indexPath.row]
+        coordinator?.eventOccured(with: .pushNav,viewModel: artVM)
     }
 }
 extension MetroPolitaListController:UICollectionViewDataSource {

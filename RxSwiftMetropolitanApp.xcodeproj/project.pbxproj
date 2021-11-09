@@ -20,6 +20,8 @@
 		D30E71172736BE8600FBE5AF /* ArtObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E71162736BE8600FBE5AF /* ArtObject.swift */; };
 		D30E71192736C00700FBE5AF /* ArtObjectDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E71182736C00700FBE5AF /* ArtObjectDataModel.swift */; };
 		D32B12D1273797E20039CC06 /* ArtObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B12D0273797E20039CC06 /* ArtObjectViewModel.swift */; };
+		D32B1401273AA3AA0039CC06 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B1400273AA3AA0039CC06 /* Coordinator.swift */; };
+		D32B1403273AA75C0039CC06 /* MetropolitanDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B1402273AA75C0039CC06 /* MetropolitanDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		D30E71162736BE8600FBE5AF /* ArtObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObject.swift; sourceTree = "<group>"; };
 		D30E71182736C00700FBE5AF /* ArtObjectDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObjectDataModel.swift; sourceTree = "<group>"; };
 		D32B12D0273797E20039CC06 /* ArtObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObjectViewModel.swift; sourceTree = "<group>"; };
+		D32B1400273AA3AA0039CC06 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		D32B1402273AA75C0039CC06 /* MetropolitanDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetropolitanDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 		D30E70EE2736918200FBE5AF /* RxSwiftMetropolitanApp */ = {
 			isa = PBXGroup;
 			children = (
+				D32B13FF273AA3910039CC06 /* Coordinator */,
 				D30E70EF2736918200FBE5AF /* AppDelegate.swift */,
 				D30E70F12736918200FBE5AF /* SceneDelegate.swift */,
 				D30E71152736BD8500FBE5AF /* Controllers */,
@@ -111,8 +116,17 @@
 			isa = PBXGroup;
 			children = (
 				D30E70F32736918200FBE5AF /* MetroPolitaListController.swift */,
+				D32B1402273AA75C0039CC06 /* MetropolitanDetailController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D32B13FF273AA3910039CC06 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D32B1400273AA3AA0039CC06 /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,8 +210,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D32B1401273AA3AA0039CC06 /* Coordinator.swift in Sources */,
 				D30E70F42736918200FBE5AF /* MetroPolitaListController.swift in Sources */,
 				D30E71172736BE8600FBE5AF /* ArtObject.swift in Sources */,
+				D32B1403273AA75C0039CC06 /* MetropolitanDetailController.swift in Sources */,
 				D32B12D1273797E20039CC06 /* ArtObjectViewModel.swift in Sources */,
 				D30E70F02736918200FBE5AF /* AppDelegate.swift in Sources */,
 				D30E70F22736918200FBE5AF /* SceneDelegate.swift in Sources */,
