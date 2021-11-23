@@ -74,9 +74,9 @@
 		D30E70EE2736918200FBE5AF /* RxSwiftMetropolitanApp */ = {
 			isa = PBXGroup;
 			children = (
-				D32B13FF273AA3910039CC06 /* Coordinator */,
 				D30E70EF2736918200FBE5AF /* AppDelegate.swift */,
 				D30E70F12736918200FBE5AF /* SceneDelegate.swift */,
+				D32B13FF273AA3910039CC06 /* Coordinator */,
 				D30E71152736BD8500FBE5AF /* Controllers */,
 				D30E71122736989200FBE5AF /* ViewModel */,
 				D30E71112736988600FBE5AF /* Models */,
