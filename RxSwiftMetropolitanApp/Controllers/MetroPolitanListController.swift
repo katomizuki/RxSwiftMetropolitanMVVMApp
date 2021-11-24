@@ -2,51 +2,64 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SDWebImage
-class MetroPolitaListController: UIViewController,Coordinating {
+class MetroPolitanListController: UIViewController,Coordinating {
     private let disposeBag = DisposeBag()
     private var viewModel = [ArtObjectViewModel]()
     var coordinator:Coordinator?
     private lazy var collectionView:UICollectionView = {
-        let layout = MetroPolitaListController.createCompositionalLayout()
+        let layout = MetroPolitanListController.createCompositionalLayout()
         let frame = view.frame
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(ArtCell.self, forCellWithReuseIdentifier: ArtCell.id)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.refreshControl = refresh
         return collectionView
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
         setupArtData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        setupArtData()
+    }
     
     private func setupArtData() {
-        for i in 60121...60221 {
+        let min = getNumber()
+        for i in min...(min + 50) {
         guard let url = URL(string: "https://collectionapi.metmuseum.org/public/collection/v1/objects/\(i)") else { return }
         let resource = Resource<ArtObject>(url: url)
         ArtObjectDataModel.load(resource: resource).subscribe { artEventObj in
             
             guard let artObj = artEventObj.element else { return }
-            let artVM = ArtObjectViewModel(art: artObj)
-                self.viewModel.append(artVM)
+            print(artObj.primaryImage)
+            if artObj.primaryImage != "" {
+                let artVM = ArtObjectViewModel(art: artObj)
+                    self.viewModel.append(artVM)
             }
+          }
         .disposed(by: disposeBag)
      }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             self.collectionView.reloadData()
+            
         }
     }
-}
 
-extension MetroPolitaListController: UICollectionViewDelegate {
+}
+// MARK: - UICollectionViewDelegate
+extension MetroPolitanListController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function)
         let artVM = viewModel[indexPath.row]
         coordinator?.eventOccured(with: .pushNav,viewModel: artVM)
     }
 }
-extension MetroPolitaListController:UICollectionViewDataSource {
+// MARK: - UICollectionViewDataSource
+extension MetroPolitanListController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.count
     }
@@ -65,7 +78,7 @@ extension MetroPolitaListController:UICollectionViewDataSource {
 }
 
 // MARK: compostionLayout
-extension MetroPolitaListController {
+extension MetroPolitanListController {
     static func createCompositionalLayout()->UICollectionViewCompositionalLayout {
         //Item
         let itemsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(2/3),
@@ -121,6 +134,12 @@ extension MetroPolitaListController {
         let section = NSCollectionLayoutSection(group: verticalGroup)
         return UICollectionViewCompositionalLayout(section: section)
         //Return
+    }
+}
+extension MetroPolitanListController {
+    private func getNumber()->Int {
+        let min = Int.random(in: 1..<471481)
+        return min
     }
 }
 

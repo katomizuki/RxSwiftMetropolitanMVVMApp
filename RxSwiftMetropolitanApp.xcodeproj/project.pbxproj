@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D30E70F02736918200FBE5AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E70EF2736918200FBE5AF /* AppDelegate.swift */; };
 		D30E70F22736918200FBE5AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E70F12736918200FBE5AF /* SceneDelegate.swift */; };
-		D30E70F42736918200FBE5AF /* MetroPolitaListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E70F32736918200FBE5AF /* MetroPolitaListController.swift */; };
+		D30E70F42736918200FBE5AF /* MetroPolitanListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E70F32736918200FBE5AF /* MetroPolitanListController.swift */; };
 		D30E70F92736918500FBE5AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30E70F82736918500FBE5AF /* Assets.xcassets */; };
 		D30E71052736920F00FBE5AF /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D30E71042736920F00FBE5AF /* RxCocoa */; };
 		D30E71072736920F00FBE5AF /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = D30E71062736920F00FBE5AF /* RxRelay */; };
@@ -28,7 +28,7 @@
 		D30E70EC2736918200FBE5AF /* RxSwiftMetropolitanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftMetropolitanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30E70EF2736918200FBE5AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D30E70F12736918200FBE5AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D30E70F32736918200FBE5AF /* MetroPolitaListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroPolitaListController.swift; sourceTree = "<group>"; };
+		D30E70F32736918200FBE5AF /* MetroPolitanListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroPolitanListController.swift; sourceTree = "<group>"; };
 		D30E70F82736918500FBE5AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D30E70FD2736918500FBE5AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D30E7113273698AE00FBE5AF /* ArtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtCell.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		D30E71152736BD8500FBE5AF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D30E70F32736918200FBE5AF /* MetroPolitaListController.swift */,
+				D30E70F32736918200FBE5AF /* MetroPolitanListController.swift */,
 				D32B1402273AA75C0039CC06 /* MetropolitanDetailController.swift */,
 			);
 			path = Controllers;
@@ -211,7 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D32B1401273AA3AA0039CC06 /* Coordinator.swift in Sources */,
-				D30E70F42736918200FBE5AF /* MetroPolitaListController.swift in Sources */,
+				D30E70F42736918200FBE5AF /* MetroPolitanListController.swift in Sources */,
 				D30E71172736BE8600FBE5AF /* ArtObject.swift in Sources */,
 				D32B1403273AA75C0039CC06 /* MetropolitanDetailController.swift in Sources */,
 				D32B12D1273797E20039CC06 /* ArtObjectViewModel.swift in Sources */,

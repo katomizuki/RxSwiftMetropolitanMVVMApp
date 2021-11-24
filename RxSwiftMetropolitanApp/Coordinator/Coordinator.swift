@@ -13,7 +13,7 @@ protocol Coordinating {
 }
 struct MainCoordinator:Coordinator {
     func start() {
-        var vc:UIViewController & Coordinating = MetroPolitaListController()
+        var vc:UIViewController & Coordinating = MetroPolitanListController()
         vc.coordinator = self
         navigationController?.setViewControllers([vc], animated: false)
     }
