@@ -13,7 +13,6 @@ class MetroPolitanListController: UIViewController,Coordinating {
         collectionView.register(ArtCell.self, forCellWithReuseIdentifier: ArtCell.id)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.refreshControl = refresh
         return collectionView
     }()
     
