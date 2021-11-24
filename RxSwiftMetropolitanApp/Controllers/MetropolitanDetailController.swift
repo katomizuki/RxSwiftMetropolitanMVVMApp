@@ -12,6 +12,7 @@ class MetropolitanDetailController:UIViewController,Coordinating {
     private let intensitySlider = UISlider()
     private let radiusSlider = UISlider()
     private var imageView = UIImageView()
+    private let scaleSlider = UISlider()
     private var currentImage:UIImage?
     private var context:CIContext!
     private var currentFilter:CIFilter!
@@ -37,22 +38,28 @@ class MetropolitanDetailController:UIViewController,Coordinating {
         guard let image = imageView.image else { return }
         let beginImage = CIImage(image: image)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        currentImage = imageView.image
+        applyProcessing()
     }
     private func setupUI() {
         view.backgroundColor = .white
         let intensityLabel = UILabel()
         let radiusLabel = UILabel()
+        let scaleLabel = UILabel()
         intensityLabel.text = "強度"
         intensityLabel.font = .systemFont(ofSize: 18)
         intensityLabel.textColor = .darkGray
         radiusLabel.text = "丸み"
         radiusLabel.font = .systemFont(ofSize: 18)
         radiusLabel.textColor = .darkGray
+        scaleLabel.textColor = .darkGray
+        scaleLabel.text = "拡大度"
+        scaleLabel.font = .systemFont(ofSize: 18)
         view.addSubview(imageView)
-        let stack = UIStackView(arrangedSubviews: [intensityLabel,intensitySlider,radiusLabel,radiusSlider])
+        let stack = UIStackView(arrangedSubviews: [intensityLabel,intensitySlider,radiusLabel,radiusSlider,scaleLabel,scaleSlider])
         stack.axis = .vertical
         stack.distribution = .equalSpacing
-        stack.spacing = 10
+        stack.spacing = 5
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -73,8 +80,8 @@ class MetropolitanDetailController:UIViewController,Coordinating {
         buttonStack.distribution = .fillEqually
         saveButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         view.addSubview(buttonStack)
-        buttonStack.topAnchor.constraint(equalTo: radiusSlider.bottomAnchor, constant: 20).isActive = true
-        buttonStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 30).isActive = true
+        buttonStack.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 20).isActive = true
+        buttonStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         buttonStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
     }
     private func setupBinding() {
@@ -89,31 +96,16 @@ class MetropolitanDetailController:UIViewController,Coordinating {
             .disposed(by: disposeBag)
     }
     @objc private func intensityChanged() {
-        print(#function)
-        let inputKeys = currentFilter.inputKeys
-        if inputKeys.contains(kCIInputIntensityKey) {
-            currentFilter.setValue(intensitySlider.value, forKey: kCIInputIntensityKey)
-        }
-        guard let outputImage = currentFilter.outputImage else { return }
-        if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
-            let processedImage = UIImage(cgImage: cgImage)
-            imageView.image = processedImage
-        }
+       applyProcessing()
     }
     @objc private func radiusChanged() {
         print(#function)
-        let inputKeys = currentFilter.inputKeys
-        if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(radiusSlider.value, forKey: kCIInputRadiusKey)
-        }
-        guard let outputImage = currentFilter.outputImage else { return }
-        if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
-            let processedImage = UIImage(cgImage: cgImage)
-            imageView.image = processedImage
-        }
+        applyProcessing()
     }
     @objc private func didTapSaveButton() {
         print(#function)
+        guard let image = imageView.image else { return }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(didFinishSave), nil)
     }
     @objc private func didTapChangeButton(sender: UIButton) {
         print(#function)
@@ -125,12 +117,56 @@ class MetropolitanDetailController:UIViewController,Coordinating {
            ac.addAction(UIAlertAction(title: "CITwirlDistortion", style: .default, handler: setFilter))
            ac.addAction(UIAlertAction(title: "CIUnsharpMask", style: .default, handler: setFilter))
            ac.addAction(UIAlertAction(title: "CIVignette", style: .default, handler: setFilter))
+           ac.addAction(UIAlertAction(title: "CIColorInvert", style: .default, handler: setFilter))
+           ac.addAction(UIAlertAction(title: "CIColorMonochrome", style: .default, handler: setFilter))
            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-
+        
         present(ac, animated: true, completion: nil)
         
     }
     private func setFilter(_ action:UIAlertAction) {
-        print(#function)
+         guard currentImage != nil else { return }
+
+           // safely read the alert action's title
+           guard let actionTitle = action.title else { return }
+
+           currentFilter = CIFilter(name: actionTitle)
+
+           let beginImage = CIImage(image: currentImage!)
+           currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+            
+           applyProcessing()
+        
     }
+    private func applyProcessing() {
+        let inputKeys = currentFilter.inputKeys
+        if inputKeys.contains(kCIInputCenterKey) { currentFilter.setValue(CIVector(x: currentImage!.size.width, y: currentImage!.size.height), forKey: kCIInputCenterKey) }
+        if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(intensitySlider.value, forKey: kCIInputIntensityKey) }
+          if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(radiusSlider.value * 200, forKey: kCIInputRadiusKey) }
+          if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(scaleSlider.value * 10, forKey: kCIInputScaleKey) }
+        if inputKeys.contains(kCIInputColorKey) {
+            currentFilter.setValue(CIColor(red: 0.5, green: 0.5, blue: 0.5), forKey: kCIInputColorKey)
+        }
+        guard let image = currentFilter.outputImage else { return }
+           if let cgimg = context.createCGImage(image, from: image.extent) {
+               let processedImage = UIImage(cgImage: cgimg)
+               imageView.image = processedImage
+           }
+    }
+    @objc private func didFinishSave(_ image:UIImage,didFinishSavingWithError error: Error?,contextInfo: UnsafeRawPointer) {
+        print(#function)
+        if let error = error {
+            print(error.localizedDescription)
+            let ac = UIAlertController(title: "保存失敗", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "保存成功", message: "無事、あなたのライブラリに保存されました", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+        
+        
+    }
+ 
 }
