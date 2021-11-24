@@ -21,10 +21,6 @@ class MetroPolitanListController: UIViewController,Coordinating {
         view.addSubview(collectionView)
         setupArtData()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        setupArtData()
-    }
     
     private func setupArtData() {
         let min = getNumber()
