@@ -12,6 +12,7 @@ class MetropolitanDetailController:UIViewController,Coordinating {
     private let intensitySlider = UISlider()
     private let radiusSlider = UISlider()
     private var imageView = UIImageView()
+    private var currentImage:UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,7 @@ class MetropolitanDetailController:UIViewController,Coordinating {
     }
     @objc private func intensityChanged() {
         print(#function)
+        
     }
     @objc private func radiusChanged() {
         print(#function)
